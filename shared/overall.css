@@ -1,0 +1,89 @@
+body > *{
+    margin: 5px 5px;
+    padding: 5px 5px;
+}
+
+table{
+    border-collapse: collapse;
+    margin: 5px;
+}
+
+hr{
+    padding: 0;
+    margin: 0;
+    border:1px solid black;
+}
+
+tr td:nth-child(2),th:nth-child(2){
+    width: 250px;
+}
+
+tr td:nth-child(3),th:nth-child(3){
+    width: 200px;
+}
+
+td,th{
+    padding: 8px;
+    border:1px solid black;
+    text-align: left;
+}
+
+th.no-border{
+    border: none;
+}
+th.align-right{
+    text-align: right;
+}
+
+tbody tr:nth-child(odd) {
+    background: #eee;
+}
+
+form{
+    display: inline-block;
+}
+
+li{
+    display: inline-block;
+    margin-right: 9px;
+}
+
+ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+input, select{
+    margin: 5px;
+}
+
+#submitForm{
+    margin-top: 14px;
+}
+
+input[type="submit"]{
+    padding:4px 8px;
+    border-radius: 8px;
+    border:1px solid darkgreen;
+    background: darkgreen;
+    color:whitesmoke;
+}
+
+input[type="text"]{
+    padding:4px 8px;
+    border-radius: 8px;
+    border:1px solid black;
+}
+
+label{
+    margin: 5px;
+    font-weight: bold;
+}
+
+h1{
+    background: #8699a4;
+    color: whitesmoke;
+    letter-spacing: 4px;
+    font-family: Arial;
+}
