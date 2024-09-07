@@ -15,9 +15,6 @@
     <hr>
     <h1>Appellaties</h1>
     <?php
-    //aanmaken nieuwe appellatie
-    echo "<form action='aanmaken.php' method='post'><input type='submit' value='maak appellatie' name='sent'></form><br>";
-
     //filteren op naam
     $filter = false;
     $text = "";
@@ -26,16 +23,24 @@
         $text = trim($_POST['filter']);
         $text = str_replace('"','\"',$text);
     }
-    if($filter){
-        echo "<form action=\"".$_SERVER['PHP_SELF']."\" method='post'><label>filter: </label><input type='text' name='filter' value='".$text."'><input type='submit' value='Ok' name='ok'></form>";
-        echo "<form action=\"".$_SERVER['PHP_SELF']."\" method='post'><input type='submit' value='Stop filter'></form><br>";
+    echo "<table><thead>
+<tr><th class='no-border' colspan='2'>";
+    if ($filter) {
+        echo "<form  action=\"" . $_SERVER['PHP_SELF'] . "\" method='post'>
+                <label>filter: </label>
+                <input type='text' name='filter' value='" . $text . "'>
+                <input type='submit' value='Ok' name='ok'>
+              </form>";
+        echo "<form  action=\"" . $_SERVER['PHP_SELF'] . "\" method='post'><input type='submit' value='Stop filter'></form>";
+    } else {
+        echo "<form action=\"" . $_SERVER['PHP_SELF'] . "\" method='post'><label>filter: </label>
+<input type='text' name='filter'><input type='submit' value='Ok' name='ok'></form>";
     }
-    else{
-        echo "<form action=\"".$_SERVER['PHP_SELF']."\" method='post'><label>filter: </label><input type='text' name='filter'><input type='submit' value='Ok' name='ok'></form><br>";
-    }
-
+    echo "<form action='aanmaken.php' method='post'><input type='submit' value='maak appellatie' name='sent'></form></th>";
+    echo "</tr>
+<tr><th class='w-fit'>Volgnummer</th><th class='w-250'>Appellatie</th></tr>
+</thead>";
     //overzicht appellaties
-    echo "<table><thead><th>Volgnummer</th><th>Appellatie</th></thead>";
     include('C:\Users\PC Gebruiker\PhpstormProjects\winedows\shared\dbconnect.php');
     if($filter) {
         //toon appellaties op basis van filter
@@ -44,13 +49,14 @@
         $result = $conn->query($sql);
         if (isset($result->num_rows)) {
             if ($result->num_rows > 0) {
+                echo "<tbody>";
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>
-                    <td>" . $row['ID'] . "</td><td>" . $row['Naam'] . "</td>
+                    <td class='w-fit'>" . $row['ID'] . "</td><td class='w-250'>" . $row['Naam'] . "</td>
                     <td>
                         <form action='aanpassen.php' method='post'>
                             <input type=\"hidden\" value=\"" . $row['ID'] . "\" name=\"ID\">
-                            <input type=\"hidden\" value=\"" .$row['Naam']. "\" name=\"Naam\">
+
                             <input type='submit' value='aanpassen' name='sent'>
                         </form>
                     </td>
@@ -62,10 +68,10 @@
                     </td>
                  </tr>";
                 }
+                echo "</tbody>";
+            }else{
+                echo "<tfoot><tr><td colspan='2'>Nog geen appellaties ingevoerd.</td></tr></tfoot>";
             }
-        }
-        else{
-            echo "Nog geen appellatie ingevoerd.";
         }
     }
     else{
@@ -74,9 +80,10 @@
         $result = $conn->query($sql);
         if(isset($result->num_rows)){
             if ($result->num_rows > 0) {
+                echo "<tbody>";
                 while($row = $result->fetch_assoc()) {
                     echo "<tr>
-                    <td>".$row['ID']."</td><td>".$row['Naam']."</td>
+                    <td class='w-fit'>".$row['ID']."</td><td class='w-250'>".$row['Naam']."</td>
                     <td>
                         <form action='aanpassen.php' method='post'>
                             <input type=\"hidden\" value=\"" .$row['Naam']. "\" name=\"Naam\">
@@ -92,16 +99,19 @@
                     </td>
                  </tr>";
                 }
+                echo "</tbody>";
+            }else {
+                echo "<tfoot><tr><td colspan='2'>Nog geen appellaties ingevoerd.</td></tr></tfoot>";
             }
-        }
-        else{
-            echo "Nog geen appellatie ingevoerd.";
         }
     }
     $conn->close();
     echo "</table>";
     ?>
     </body>
+    <script>
+        document.getElementsByTagName('a')[1].classList.add('active')
+    </script>
 </html>
 
 

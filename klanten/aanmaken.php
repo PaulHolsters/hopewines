@@ -60,7 +60,6 @@ if(isset($_POST['add'])&&$_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php
     include ('../shared/hoofdmenu_2.php');
     ?>
-    <hr>
     <h1>Nieuwe klant</h1>
     <?php
     //terug naar overzicht
@@ -101,4 +100,7 @@ if(isset($_POST['add'])&&$_SERVER['REQUEST_METHOD'] === 'POST') {
           </form>";
     ?>
     </body>
+    <script>
+        document.getElementsByTagName('a')[2].classList.add('active')
+    </script>
 </html>

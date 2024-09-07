@@ -5,7 +5,7 @@ body > *{
 
 table{
     border-collapse: collapse;
-    margin: 5px;
+    margin: 16px 4px;
 }
 
 hr{
@@ -14,12 +14,36 @@ hr{
     border:1px solid black;
 }
 
-tr td:nth-child(2),th:nth-child(2){
-    width: 250px;
+li{
+    padding: 8px;
 }
 
-tr td:nth-child(3),th:nth-child(3){
+a{
+    text-decoration: none;
+    font-family: Arial;
+    padding: 4px 8px;
+    color: #1f6377;
+}
+
+a.active{
+    background: #1f6377;
+    color: whitesmoke;
+}
+
+a:hover{
+    border-top: 2px solid #0077b3;
+}
+
+/* todo wat bij kortere tabellen? */
+
+.w-250{
+    width: 250px;
+}
+.w-200{
     width: 200px;
+}
+.w-fit{
+    width: fit-content;
 }
 
 td,th{
@@ -31,6 +55,7 @@ td,th{
 th.no-border{
     border: none;
 }
+
 th.align-right{
     text-align: right;
 }
@@ -48,10 +73,11 @@ li{
     margin-right: 9px;
 }
 
-ul{
+ul {
     list-style-type: none;
     padding: 0;
-    margin: 0;
+    margin: 0 0 8px 0;
+    border-bottom: 2px solid #1f6377;
 }
 
 input, select{
@@ -86,4 +112,6 @@ h1{
     color: whitesmoke;
     letter-spacing: 4px;
     font-family: Arial;
+    margin-left: 0;
+    margin-right: 0;
 }
